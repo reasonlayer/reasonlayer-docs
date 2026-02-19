@@ -1,0 +1,27 @@
+---
+title: "Adding an API Key"
+description: "How to add your OpenRouter API key for AI model access."
+icon: "key"
+---
+
+To use AI models with your agent, you need to add an OpenRouter API key as a credential. OpenRouter is used because it lets you select whatever model you like.
+
+## Steps
+
+1. **Sign up at OpenRouter** — Go to [openrouter.ai](https://openrouter.ai) and create an account.
+
+2. **Get your API key** — After signing up, generate an API key from your OpenRouter dashboard.
+
+![OpenRouter API Keys page](/images/openrouter-api-key.png)
+
+3. **Create a credential in Reasonlayer** — In your Reasonlayer dashboard, create a new credential with:
+   - **Name:** `OPENROUTER_API_KEY` (must be named exactly this)
+   - **Allowed domains:** `*.openrouter.ai`
+
+![Add Credential dialog](/images/credential-ai-token.png)
+
+Your agent will now have access to AI models through OpenRouter.
+
+## Editing the model
+
+The default model is Opus from Anthropic. To change it, go to the **Code** tab in Reasonlayer, open the `openclaw.json` file in the file system, and edit it there.

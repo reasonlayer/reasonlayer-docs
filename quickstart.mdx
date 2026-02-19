@@ -1,14 +1,35 @@
 ---
 title: "Quickstart"
 description: "Start building autonomous agents in minutes."
+icon: "rocket"
 ---
 
-## Get started
+<Steps>
+  <Step title="Deploy your agent">
+    Add an OpenClaw agent in Reasonlayer to get started. Each deployed agent costs $10/month.
 
-### Step 1: Deploy the agent of choice
+    <Note>
+      This is less than what cloud providers charge us to host your machine and you get our security features for free.
+    </Note>
+  </Step>
 
-We currently only support OpenClaw deploy.
+  <Step title="Add an API key">
+    Configure your AI model by adding an OpenRouter API key. See [Adding an API Key](/essentials/api-key) for full instructions.
 
-### Step 2: Connect to chat apps
+    In short: sign up at [OpenRouter](https://openrouter.ai), get your API key, then create a credential named `OPENROUTER_API_KEY` with allowed domains `*.openrouter.ai`.
+  </Step>
 
-See [Connecting to Chat Apps](/essentials/channels) for setup instructions to accessing agents via slack, telegram, etc.
+  <Step title="Connect to chat apps">
+    Access your agent via Slack, Telegram, and other chat platforms. See [Connecting to Chat Apps](/essentials/channels) for setup instructions.
+  </Step>
+</Steps>
+
+## Next steps
+
+<Card icon="message-circle" horizontal href="/essentials/channels" title="Connect to Chat Apps">
+  Set up Telegram, Slack, Discord, and more.
+</Card>
+
+<Card icon="key" horizontal href="/essentials/api-key" title="Adding an API Key">
+  Configure OpenRouter and other AI model credentials.
+</Card>
