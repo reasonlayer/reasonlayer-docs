@@ -1,0 +1,59 @@
+---
+title: "Cloud Hosted"
+description: "Deploy agents through Reasonlayer's managed cloud infrastructure."
+icon: "cloud"
+---
+
+Let Reasonlayer handle the infrastructure. Deploy your agent in minutes with our managed cloud platform.
+
+## How it works
+
+<Steps>
+  <Step title="Add your OpenRouter API key">
+    Your agent needs access to AI models. Add your OpenRouter API key as a credential so your agent can think.
+    
+    See [Adding an API Key](/essentials/api-key) for full instructions.
+  </Step>
+
+  <Step title="Add your credentials">
+    Add any credentials your agent needs (API keys, tokens, etc.) in the **Credentials** tab. These are securely vaulted and injected at runtime — your agent never sees the raw values.
+    
+    After adding credentials, click **Apply** to make them available to your agent.
+  </Step>
+
+  <Step title="Add skills and customize">
+    Use the **Code** tab to access your agent's file system. From here you can:
+    
+    - Add new skill files to extend your agent's capabilities
+    - Edit configuration files like `openclaw.json`
+    - Or just tell your agent to create skills for you — it can edit its own files
+    
+    <Tip>
+      When adding skills that need tokens or API keys, don't hardcode them in the skill files. Instead, add the token in the **Credentials** tab as if it were an environment variable. It will automatically be available to your agent at runtime.
+    </Tip>
+  </Step>
+</Steps>
+
+## Pricing
+
+Each deployed agent costs **$10/month**. This includes:
+
+- Managed hosting infrastructure
+- Credential vaulting
+- Network controls
+- Audit logging
+- All security features
+
+<Note>
+  This is less than what cloud providers charge us to host your machine — you get our security features for free.
+</Note>
+
+## Next steps
+
+<Card icon="key" horizontal href="/essentials/api-key" title="Add an API Key">
+  Configure your OpenRouter API key for AI model access.
+</Card>
+
+<Card icon="message-circle" horizontal href="/essentials/channels" title="Connect to Chat Apps">
+  Set up Telegram, Slack, Discord, and more.
+</Card>
