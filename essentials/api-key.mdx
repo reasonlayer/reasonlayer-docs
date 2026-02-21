@@ -4,31 +4,28 @@ description: "How to securely add your API keys to Reasonlayer."
 icon: "key"
 ---
 
-As an example, we're going to add an OPENROUTER_API_KEY to the vault to show you how it works.
+As an example, we're going to add an `OPENROUTER_API_KEY` to the vault to show you how it works.
 
 ## Steps
 
 1. **Get your API Key from the provider** - in this case I went to Openrouter and generated a key.
-
 2. **Create a credential in Reasonlayer** — In your Reasonlayer dashboard, create a new credential named whatever you want:
-
    - **Name:** `OPENROUTER_API_KEY`
    - **Allowed domains:** `*.openrouter.ai`
 
 {" "}
+
 <Note>
-  We also added a button to add Openrouter's config easily because it's a common
-  API key to add when setting up agents. Openrouter lets you use many agent
-  models using one API key, [visit their site here](https://openrouter.ai).
+  We also added a button to add Openrouter's config easily because it's a common API key to add when setting up agents. Openrouter lets you use many agent models using one API key, [visit their site here](https://openrouter.ai).
 </Note>
 
 <img
   src="/images/credential-ai.png"
   alt="Add Credential dialog"
-  style={{ width: "450px", height: "auto" }}
+  style={{ width:"450px",height:"auto" }}
 />
 
 We allow wildcards in the allowed domains field (e.g., `*.openrouter.ai` matches all subdomains of openrouter.ai).
 
-4. After adding all of your credentials, click apply changes. This will run a restart on the machine if you're hosting your openclaw on Reasonlayer.
-5. The environment your agent runs in can now make requests using OPENROUTER_API_KEY but won't know it's value. The agent sees the environment variable as `rlcredXXXXX` but in reality we replace it in our security layer with the actual value before making the request.
+4. After adding all of your credentials, click apply changes if using our managed solution (this will do a machine restart and your openclaw will be temporarily down).
+5. The environment your agent runs in can now make requests using `OPENROUTER_API_KEY`but won't know the API key value. The agent sees the environment variable as `rlcredXXXXX` but in reality we replace it in our security layer with the actual value before making the request.
