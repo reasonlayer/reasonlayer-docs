@@ -2,42 +2,51 @@
 title: "Introduction"
 ---
 
-Reasonlayer is the security and infrastructure layer to deploy, monitor, and secure autonomous agents at scale. We handle the hard parts.
- 
-## What you get
+Reasonlayer is the security layer for autonomous agents like Openclaw.
 
-<Columns cols={2}>
-  <Card icon="key" title="Credential vaulting" href="/quickstart">
-    Built-in credential vaulting with tokens injected at execution time through our security layer. Keep credentials away from your agents.
-  </Card>
-  <Card icon="shield" title="Network controls" href="/quickstart">
-    Define allow and block lists to control what websites your agent has access to.
-  </Card>
-  <Card icon="rocket" title="One-click deployment" href="/quickstart">
-    Install agents in one click. We support OpenClaw out of the box.
-  </Card>
-  <Card icon="clipboard-list" title="Auditing & logging" href="/quickstart">
-    Every agent action is logged with execution context, including audit trails and token usage metrics.
-  </Card>
-</Columns>
+In these docs, we'll go over how to setup Reasonlayer for your existing Openclaw setup or openclaws you deploy on our platform. In both cases, the security features are the same.
 
-## Choose your deployment
 
-<Columns cols={2}>
-  <Card icon="cloud" title="Cloud Hosted" href="/essentials/cloud-hosted">
-    Deploy through Reasonlayer's managed infrastructure. We handle hosting, security, and updates.
-  </Card>
-  <Card icon="server" title="Self-Install" href="/essentials/self-hosted">
-    Run on your own machine or VM with the same Reasonlayer security.
-  </Card>
-</Columns>
+## Quick Start
 
-## Getting started
-
-<Card icon="rocket" horizontal href="/quickstart" title="Start here">
-  Follow our quickstart guide to deploy your first agent.
+<Card icon="server" horizontal href="/installing-on-existing-setups" title="Connect to your existing Openclaw setup">
+  For people already running openclaw on their own infrastructure or cloud.
 </Card>
 
-<Card icon="message-circle" horizontal href="/essentials/channels" title="Connect to Chat Apps">
-  Connect your agents to your favorite chat apps like Whatsapp or Telegram.
+<Card
+  icon="bolt"
+  horizontal
+  href="/openclaws-hosted-on-reasonlayer"
+  title="Setting up the fully-managed solution"
+>
+  Docs on creating Openclaws in our fully managed solution.
 </Card>
+
+## More on our Security Features
+
+<Columns cols={2}>
+  <Card
+    icon="key"
+    title="Credential vaulting"
+    href="/security/credential-vaulting"
+  >
+    Built-in credential vaulting with tokens injected at execution time through
+    our security layer. Keep credentials away from your agents.
+  </Card>
+  <Card
+    icon="shield"
+    title="Network controls"
+    href="/security/network-controls"
+  >
+    Define allow and block lists to control what websites your agent has access
+    to.
+  </Card>
+  <Card
+    icon="clipboard-list"
+    title="Auditing & logging"
+    href="/security/auditing-logging"
+  >
+    Every agent action is logged with execution context, including audit trails
+    and token usage metrics.
+  </Card>
+</Columns>
