@@ -1,0 +1,88 @@
+---
+title: "Linux or Mac"
+description: "Run OpenClaw with Reasonlayer on Linux or Mac"
+icon: "terminal"
+---
+
+<Tip>
+  We recommend dedicating the machine exclusively to running OpenClaw as all
+  traffic is routed through the on-device proxy.
+</Tip>
+
+## Prerequisites
+
+You should have:
+
+1. A Linux machine with `sudo` access, either hosted in the cloud or locally.
+2. Created an agent in Reasonlayer
+3. One or more credentials assigned to the agent. Refer to [Adding credentials](/using-reasonlayer/adding-credentials).
+
+### Step 1: Install the Reasonlayer proxy first
+
+You can find your proxy token on your agent’s page in the Reasonlayer dashboard.
+
+<img
+  src="/images/proxy-token.png"
+  alt="Agent Info showing the proxy token in Reasonlayer"
+  style={{ width: "450px", height: "auto" }}
+/>
+
+After copying the token, run the following command inside the root to install Reasonlayer.
+
+```bash
+curl -fsSL https://install.reasonlayer.com/reasonlayer | sudo bash -s -- \
+  --proxy-token <PROXY_TOKEN>
+```
+
+If OpenClaw is using a non-default state directory, include the following flag:
+
+```bash
+--openclaw-home /path/to/.openclaw
+```
+
+### Step 2: Replace or add credentials
+
+If you already have OpenClaw installed, you should remove your sensitive credentials from the config / filesystem and replace them with the hash under each assigned credential as shown below:
+
+<img
+  src="/images/credential-hash.png"
+  alt="Assigned Credentials showing the credential hash (rlcred_) in Reasonlayer"
+  style={{ width: "250px", height: "auto" }}
+/>
+
+If you don't have OpenClaw installed yet, then during the onboarding wizard you should
+use credential hash values instead of the actual secrets.
+
+<img
+  src="/images/onboard.png"
+  alt="Onboarding Wizard with Credential"
+  style={{ width: "250px", height: "auto" }}
+/>
+
+Restart the OpenClaw gateway:
+
+```bash
+openclaw gateway restart
+sudo reasonlayer start
+```
+
+If OpenClaw isn't restarting (common on Linux):
+
+```bash
+openclaw gateway stop
+openclaw gateway start
+sudo reasonlayer start
+```
+
+### Step 4: Verify
+
+Go to reasonlayer and you should be able to start seeing audit logs.
+
+You can also run an extra check:
+
+```bash
+reasonlayer status
+curl -s http://127.0.0.1:18080/healthz
+```
+
+You can than try using one of your credentials and you should see it working.

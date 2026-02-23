@@ -1,1 +1,86 @@
-{"$schema":"https://mintlify.com/docs.json","theme":"mint","name":"Reasonlayer","colors":{"primary":"#6C85DC","light":"#94a4de","dark":"#3f63e5"},"favicon":"/images/logo.svg","navigation":{"tabs":[{"tab":"Guides","groups":[{"group":"Getting started","pages":["index","essentials/api-key","essentials/credentials-in-skills-and-chat"]},{"group":"Existing OpenClaw setup","pages":["installing-on-existing-setups/index","installing-on-existing-setups/mac-mini","installing-on-existing-setups/virtual-machines-cloud","installing-on-existing-setups/local-setup"]},{"group":"Fully managed solution","pages":["openclaws-hosted-on-reasonlayer/index","openclaws-hosted-on-reasonlayer/channels"]},{"group":"More on our Security","pages":["security/credential-vaulting","security/network-controls","security/auditing-logging"]},{"group":"Reasonlayer","pages":["admin/Reasonlayer/support"]}]}]},"logo":{"light":"/images/horizontal.svg","dark":"/images/horizontal.svg"},"navbar":{"links":[{"label":"Support","href":"mailto:ariel@reasonlayer.com"}],"primary":{"type":"button","label":"Dashboard","href":"https://app.reasonlayer.com"}},"contextual":{"options":["copy","view","chatgpt","claude","perplexity","mcp","cursor","vscode"]},"footer":{"socials":{}},"background":{"decoration":"gradient"},"appearance":{"default":"light"},"fonts":{"family":"Inter"},"icons":{"library":"lucide"},"description":"The security layer for autonomous agents."}
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Reasonlayer",
+  "colors": {
+    "primary": "#6C85DC",
+    "light": "#94a4de",
+    "dark": "#3f63e5"
+  },
+  "favicon": "/images/logo.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": ["index"]
+          },
+  
+          {
+            "group": "Setup",
+            "pages": [
+              "setup/index",
+              "setup/linux-mac",
+              "setup/windows"
+            ]
+          },
+          {
+            "group": "Using Reasonlayer",
+            "pages": [
+              "using-reasonlayer/index",
+              "using-reasonlayer/adding-credentials",
+              "using-reasonlayer/credentials-in-openclaw",
+              "using-reasonlayer/network-controls"
+            ]
+          },
+          {
+            "group": "Info",
+            "pages": ["info/how-it-works","info/uninstalling-reasonlayer"]
+          },
+          {
+            "group": "Reasonlayer",
+            "pages": ["admin/Reasonlayer/support"]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/images/horizontal.svg",
+    "dark": "/images/horizontal.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Join our Discord",
+        "href": "https://discord.com/invite/Dcnxxu4bmA"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://app.reasonlayer.com"
+    }
+  },
+  "contextual": {
+    "options": ["copy", "view", "chatgpt", "claude", "perplexity", "mcp", "cursor", "vscode"]
+  },
+  "footer": {
+    "socials": {}
+  },
+  "background": {
+    "decoration": "gradient"
+  },
+  "appearance": {
+    "default": "light"
+  },
+  "fonts": {
+    "family": "Inter"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "description": "The security layer for autonomous agents."
+}
