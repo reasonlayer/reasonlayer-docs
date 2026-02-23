@@ -1,0 +1,178 @@
+---
+title: "Mac mini"
+description: "Run Reasonlayer on your Mac mini."
+icon: "monitor"
+---
+
+This guide walks through installing the Reasonlayer device proxy on a macOS machine where OpenClaw is already set up.
+
+## Prerequisites
+
+1. A Mac (Apple Silicon or Intel).
+2. Admin (`sudo`) access.
+3. OpenClaw installed and running (`openclaw gateway` is active).
+4. A self-hosted agent in Reasonlayer with a proxy token and at least one credential assignment.
+
+## Step 1: Get your proxy token and credential hashes
+
+In the Reasonlayer dashboard:
+
+1. Go to **Credentials** and add your real secret(s) (e.g. OpenAI API key).
+2. Go to **Self-hosted**, open your agent, and click **Assign Credential**.
+3. Set the env var name (e.g. `OPENAI_API_KEY`).
+4. Copy:
+      - The **Proxy Token** (shown on the agent page).
+      - The **Environment Summary** lines (`ENV_NAME=rlcred_...`).
+
+## Step 2: Install the Reasonlayer proxy
+
+```bash
+curl -fsSL https://install.reasonlayer.com/reasonlayer | sudo bash -s -- \
+  --proxy-token <PROXY_TOKEN>
+```
+
+To pin a specific version:
+
+```bash
+curl -fsSL https://install.reasonlayer.com/reasonlayer | sudo bash -s -- \
+  --proxy-token <PROXY_TOKEN> \
+  --version 0.1.5
+```
+
+If OpenClaw uses a non-default state directory:
+
+```bash
+curl -fsSL https://install.reasonlayer.com/reasonlayer | sudo bash -s -- \
+  --proxy-token <PROXY_TOKEN> \
+  --openclaw-home /path/to/.openclaw
+```
+
+### What the installer does
+
+1. Downloads the correct binary (`darwin-arm64` or `darwin-amd64`) with SHA256 verification.
+2. Installs the binary to `/usr/local/bin/reasonlayer`.
+3. Generates a local CA certificate for HTTPS interception.
+4. Adds the CA to the macOS system Keychain.
+5. Creates a `_reasonlayerproxy` system user.
+6. Adds `pf` firewall anchor references to `/etc/pf.conf`.
+7. Registers two launchd services:
+      - `com.reasonlayer.proxy.helper` (privileged helper, runs as root)
+      - `com.reasonlayer.proxy` (proxy process, runs as `_reasonlayerproxy`)
+8. Injects `NODE_EXTRA_CA_CERTS` into OpenClaw's gateway launchd plist and your shell config (`.zshrc` or `.bash_profile`).
+9. Stops the proxy service and waits for you to restart OpenClaw first.
+
+## Step 3: Update OpenClaw env with hashed credentials
+
+Replace real API keys in your OpenClaw config with the `rlcred_...` hashes from the Environment Summary.
+
+Update your OpenClaw `.env` or environment config with the hashed values:
+
+```
+OPENAI_API_KEY=rlcred_abc123...
+```
+
+## Step 4: Restart OpenClaw gateway
+
+OpenClaw must be restarted so it picks up the new CA certificate (`NODE_EXTRA_CA_CERTS`) before the proxy starts intercepting traffic.
+
+```bash
+openclaw gateway restart
+```
+
+## Step 5: Start the proxy
+
+```bash
+sudo reasonlayer start
+```
+
+The proxy will now intercept HTTPS traffic, resolve `rlcred_...` hashes to real credentials, and persist across reboots.
+
+## Step 6: Verify
+
+```bash
+reasonlayer status
+```
+
+Expected output when running correctly:
+
+```
+Status: OK
+  Uptime: <seconds>
+  Transparent port: 18443
+  Checks:
+    Listener:         ok
+    Firewall:         ok
+    CA installed:     ok
+    Helper connected: ok
+```
+
+You can also hit the health endpoint directly:
+
+```bash
+curl -s http://127.0.0.1:18080/healthz | python3 -m json.tool
+```
+
+Then run an OpenClaw flow that uses one of the hashed env vars. The proxy should resolve `rlcred_...` to the real credential at request time and you should see audit logs appear in the Reasonlayer dashboard.
+
+## Viewing logs
+
+```bash
+# View all logs
+reasonlayer logs
+
+# Follow logs in real time
+reasonlayer logs -f
+```
+
+Log files are stored at:
+
+- `/var/log/reasonlayer/reasonlayer.log` (proxy)
+- `/var/log/reasonlayer/helper.log` (privileged helper)
+
+## Uninstalling
+
+```bash
+curl -fsSL https://install.reasonlayer.com/reasonlayer | sudo bash -s -- uninstall
+```
+
+Or if the binary is already installed:
+
+```bash
+sudo reasonlayer uninstall
+sudo rm /usr/local/bin/reasonlayer
+```
+
+This removes the launchd services, CA certificate from Keychain, firewall rules, system user, and config directory.
+
+## Troubleshooting
+
+### Proxy shows "NOT RUNNING"
+
+1. Check that OpenClaw was restarted after install (it must load `NODE_EXTRA_CA_CERTS`).
+2. Run `sudo reasonlayer start` again.
+3. Check logs: `reasonlayer logs`.
+
+### HTTPS requests fail with certificate errors
+
+OpenClaw hasn't picked up the CA certificate. Verify:
+
+```bash
+# Check NODE_EXTRA_CA_CERTS is set in OpenClaw's plist
+grep NODE_EXTRA_CA_CERTS ~/Library/LaunchAgents/*openclaw*
+```
+
+If missing, restart the install or manually restart OpenClaw gateway.
+
+### Firewall check fails
+
+The `pf` firewall may not have loaded the anchor. Try:
+
+```bash
+sudo pfctl -s Anchors
+```
+
+You should see `com.reasonlayer.proxy` listed. If not, re-run:
+
+```bash
+sudo pfctl -f /etc/pf.conf
+```

@@ -1,0 +1,22 @@
+---
+title: "Setting network controls"
+description: "Define allow and block lists to control what websites your agent has access to."
+icon: "shield"
+---
+
+Reasonlayer lets you define allow and block lists to control what websites your agent has access to. This prevents agents from reaching unintended or malicious destinations.
+You can configure this in the network rules page in the dashboard.
+
+## How it works
+
+**Allowlist** — Specify only the routes (domains or URLs) that your agent is permitted to access. Everything else is blocked. Use this when you want to restrict your agent to a known set of destinations.
+
+**Blocklist** — Specify only the routes that your agent is not permitted to access. Everything else is allowed. Use this when you want to block specific destinations while leaving the rest open.
+
+<Tip>
+  Companies often use multiple domains (for example, Clawhub has clawhub.com and
+  clawhub.ai). When blocking a company, you should add all of its domains to
+  your block list.
+</Tip>
+
+These two modes work in opposite ways: an allowlist blocks by default and permits only what you list; a blocklist permits by default and blocks only what you list. Usually it doesn't make sense to use both.
