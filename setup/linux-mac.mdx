@@ -5,15 +5,14 @@ icon: "terminal"
 ---
 
 <Tip>
-  We recommend dedicating the machine exclusively to running OpenClaw as all
-  traffic is routed through the on-device proxy.
+  We recommend dedicating the machine exclusively to running OpenClaw as all traffic is routed through the on-device proxy.
 </Tip>
 
 ## Prerequisites
 
 You should have:
 
-1. A Linux machine with `sudo` access, either hosted in the cloud or locally.
+1. A Linux or Mac machine with `sudo` access, either hosted in the cloud or locally.
 2. Created an agent in Reasonlayer
 3. One or more credentials assigned to the agent. Refer to [Adding credentials](/using-reasonlayer/adding-credentials).
 
@@ -24,7 +23,7 @@ You can find your proxy token on your agent’s page in the Reasonlayer dashboar
 <img
   src="/images/proxy-token.png"
   alt="Agent Info showing the proxy token in Reasonlayer"
-  style={{ width: "450px", height: "auto" }}
+  style={{ width:"450px",height:"auto" }}
 />
 
 After copying the token, run the following command inside the root to install Reasonlayer.
@@ -47,19 +46,18 @@ If you already have OpenClaw installed, you should remove your sensitive credent
 <img
   src="/images/credential-hash.png"
   alt="Assigned Credentials showing the credential hash (rlcred_) in Reasonlayer"
-  style={{ width: "250px", height: "auto" }}
+  style={{ width:"250px",height:"auto" }}
 />
 
-If you don't have OpenClaw installed yet, then during the onboarding wizard you should
-use credential hash values instead of the actual secrets.
+If you don't have OpenClaw installed yet, then during the onboarding wizard you should use credential hash values instead of the actual secrets.
 
 <img
   src="/images/onboard.png"
   alt="Onboarding Wizard with Credential"
-  style={{ width: "250px", height: "auto" }}
+  style={{ width:"250px",height:"auto" }}
 />
 
-Restart the OpenClaw gateway:
+After you're done, restart the OpenClaw gateway:
 
 ```bash
 openclaw gateway restart
@@ -78,7 +76,7 @@ sudo reasonlayer start
 
 Go to reasonlayer and you should be able to start seeing audit logs.
 
-You can also run an extra check:
+You can also run an extra check to verify it worked:
 
 ```bash
 reasonlayer status
