@@ -15,33 +15,36 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": ["index"]
-          },
-  
-          {
-            "group": "Setup",
             "pages": [
-              "setup/index",
-              "setup/linux-mac",
-              "setup/windows"
+              "index",
+              "quickstart"
             ]
           },
           {
-            "group": "Using Reasonlayer",
+            "group": "Building workflows",
+            "icon": "workflow",
             "pages": [
-              "using-reasonlayer/index",
-              "using-reasonlayer/adding-credentials",
-              "using-reasonlayer/credentials-in-openclaw",
-              "using-reasonlayer/network-controls"
+              "workflows/creating-workflows",
+              "workflows/notifications",
+              "workflows/human-review"
             ]
           },
           {
-            "group": "Info",
-            "pages": ["info/how-it-works","info/uninstalling-reasonlayer"]
+            "group": "Connecting your tools",
+            "icon": "plug",
+            "pages": [
+              "connect/managing-credentials",
+              "connect/integrations"
+            ]
           },
           {
-            "group": "Reasonlayer",
-            "pages": ["admin/Reasonlayer/support"]
+            "group": "Running agents",
+            "icon": "cpu",
+            "pages": [
+              "agents/computing-environment",
+              "agents/deployment",
+              "agents/exporting-code"
+            ]
           }
         ]
       }
@@ -82,5 +85,5 @@
   "icons": {
     "library": "lucide"
   },
-  "description": "The security layer for autonomous agents."
+  "description": "Automate real work with AI, while keeping human oversight."
 }
