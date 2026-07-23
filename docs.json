@@ -15,7 +15,36 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": ["index"]
+            "pages": [
+              "index",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Building workflows",
+            "icon": "workflow",
+            "pages": [
+              "workflows/creating-workflows",
+              "workflows/notifications",
+              "workflows/human-review"
+            ]
+          },
+          {
+            "group": "Connecting your tools",
+            "icon": "plug",
+            "pages": [
+              "connect/managing-credentials",
+              "connect/integrations"
+            ]
+          },
+          {
+            "group": "Running agents",
+            "icon": "cpu",
+            "pages": [
+              "agents/computing-environment",
+              "agents/deployment",
+              "agents/exporting-code"
+            ]
           },
   
           {
@@ -24,7 +53,8 @@
               "setup/index",
               "setup/linux-mac",
               "setup/windows"
-            ]
+            ],
+            "hidden": true
           },
           {
             "group": "Using Reasonlayer",
@@ -33,15 +63,23 @@
               "using-reasonlayer/adding-credentials",
               "using-reasonlayer/credentials-in-openclaw",
               "using-reasonlayer/network-controls"
-            ]
+            ],
+            "hidden": true
           },
           {
             "group": "Info",
-            "pages": ["info/how-it-works","info/uninstalling-reasonlayer"]
+            "pages": [
+              "info/how-it-works",
+              "info/uninstalling-reasonlayer"
+            ],
+            "hidden": true
           },
           {
             "group": "Reasonlayer",
-            "pages": ["admin/Reasonlayer/support"]
+            "pages": [
+              "admin/Reasonlayer/support"
+            ],
+            "hidden": true
           }
         ]
       }
@@ -82,5 +120,5 @@
   "icons": {
     "library": "lucide"
   },
-  "description": "The security layer for autonomous agents."
+  "description": "Automate real work with AI, while keeping human oversight."
 }

@@ -2,25 +2,62 @@
 title: "Introduction"
 ---
 
-Reasonlayer is the security layer for autonomous agents like OpenClaw. With Reasonlayer you can add credential vaulting, network controls and audit logging to your agent setup in minutes.
+Reasonlayer is a platform for building and running **agent workflows** that handle real work while keeping your team in the loop on every decision that counts. You describe what you want to automate in plain English, Reasonlayer compiles it into an executable workflow, and your agents carry it out—reading and writing files, using the browser, and running code, just like a real person would. No coding required.
 
-In these docs, we'll go over setup and how to use all Reasonlayer features.
+What makes Reasonlayer different is **human oversight**. Instead of handing tasks to a black box, you place review gates at the moments that matter. Agents do the repetitive work; your team edits, approves, or redirects the output before anything ships. You get the speed of automation without giving up control over quality.
 
-## Quick Start
+Teams use Reasonlayer to automate work across outbound sales, account management, customer support, recruitment, social media, and operations.
+
+## How it works
+
+<Steps>
+  <Step title="Design your workflow">
+    Describe what you want to automate in the web app in plain English—or connect your own Claude Code or Cursor agent. Reasonlayer turns your description into an executable workflow.
+  </Step>
+  <Step title="Add human review gates">
+    Route the agent's output to the right person on your team. They can review and edit what the agent produced, and get notified in Slack or email when it's their turn.
+  </Step>
+  <Step title="Run agents in production">
+    Your agents read and write files, use the browser, and execute code in a secure computing environment—running in the cloud or locally, with access to the tools and integrations they need.
+  </Step>
+</Steps>
+
+## Get started
 
 <Columns cols={2}>
-  <Card icon="server" href="/setup" title="Setup Reasonlayer">
-    Install Reasonlayer on your machine running OpenClaw.
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Go from zero to your first running workflow in a few minutes.
   </Card>
-  <Card icon="settings" href="/using-reasonlayer" title="Using Reasonlayer">
-    Using all Reasonlayer features.
+
+  <Card title="Creating workflows" icon="workflow" href="/workflows/creating-workflows">
+    Learn how to design, edit, and run workflows in plain English.
+  </Card>
+
+  <Card title="Managing credentials" icon="key" href="/connect/managing-credentials">
+    Securely store the API keys and secrets your agents use.
+  </Card>
+
+  <Card title="Integrations" icon="plug" href="/connect/integrations">
+    Connect the tools your agents work with, like HubSpot and Gmail.
   </Card>
 </Columns>
 
-## More Docs
+## Key concepts
 
 <Columns cols={2}>
-  <Card icon="info" href="/info/how-it-works" title="How Reasonlayer Works">
-    A simple overview of how Reasonlayer secures your agent.
+  <Card title="Human review & approvals" icon="user-check" href="/workflows/human-review">
+    Keep your team in control with review gates on the decisions that count.
+  </Card>
+
+  <Card title="Agent computing environment" icon="cpu" href="/agents/computing-environment">
+    The secure environment where your agents browse, run code, and use files.
+  </Card>
+
+  <Card title="Deployment" icon="server" href="/agents/deployment">
+    Run your agents in the cloud or locally on your own hardware.
+  </Card>
+
+  <Card title="Exporting code" icon="code" href="/agents/exporting-code">
+    Take the code behind your workflows with you—no lock-in.
   </Card>
 </Columns>
