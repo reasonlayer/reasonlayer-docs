@@ -45,41 +45,6 @@
               "agents/deployment",
               "agents/exporting-code"
             ]
-          },
-  
-          {
-            "group": "Setup",
-            "pages": [
-              "setup/index",
-              "setup/linux-mac",
-              "setup/windows"
-            ],
-            "hidden": true
-          },
-          {
-            "group": "Using Reasonlayer",
-            "pages": [
-              "using-reasonlayer/index",
-              "using-reasonlayer/adding-credentials",
-              "using-reasonlayer/credentials-in-openclaw",
-              "using-reasonlayer/network-controls"
-            ],
-            "hidden": true
-          },
-          {
-            "group": "Info",
-            "pages": [
-              "info/how-it-works",
-              "info/uninstalling-reasonlayer"
-            ],
-            "hidden": true
-          },
-          {
-            "group": "Reasonlayer",
-            "pages": [
-              "admin/Reasonlayer/support"
-            ],
-            "hidden": true
           }
         ]
       }
